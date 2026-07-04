@@ -156,8 +156,8 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
     setLastScrollY(currentScrollY);
   };
 
-  const displayName = settings?.display_name || userMetadata?.full_name || userEmail?.split("@")[0] || "User";
-  const avatarUrl = settings?.avatar_url || userMetadata?.avatar_url;
+  const displayName = settings?.display_name || (userMetadata?.full_name as string | undefined) || userEmail?.split("@")[0] || "User";
+  const avatarUrl = settings?.avatar_url || (userMetadata?.avatar_url as string | undefined);
 
   // Generate avatar initials from display name
   const initials = displayName
