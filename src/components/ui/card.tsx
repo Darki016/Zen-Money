@@ -10,7 +10,7 @@ const Card = React.forwardRef<HTMLDivElement, HTMLMotionProps<"div">>(
       whileHover={{ y: -4, scale: 1.01 }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
       className={cn("rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-surface)] text-[var(--text-primary)] shadow-sm hover:shadow-xl hover:border-white/10 transition-all", className)}
-      {...props as any}
+      {...(props as HTMLMotionProps<"div">)}
     />
   )
 )

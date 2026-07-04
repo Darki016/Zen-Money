@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useEffect, useState, useRef } from "react";
+import React, { useMemo, useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { useAppStore } from "@/lib/store";
 import {
@@ -99,7 +99,7 @@ function GlassCard({
           transform: "perspective(1000px) rotateX(0deg) rotateY(0deg)",
         })
       }
-      style={style as any}
+      style={style as React.CSSProperties}
       className={`glass-panel glass-panel-highlight glass-panel--accent-${tint} p-6 transition-transform duration-100 ease-out will-change-transform ${className}`}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
     >

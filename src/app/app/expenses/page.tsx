@@ -11,8 +11,6 @@ import { GlassSelect } from "@/components/ui/glass-select";
 import {
   Card,
   CardContent,
-  CardHeader,
-  CardTitle,
 } from "@/components/ui/card";
 import {
   Search,
@@ -21,7 +19,6 @@ import {
   Pencil,
   Check,
   X,
-  ChevronDown,
   Undo2,
   Receipt,
 } from "lucide-react";

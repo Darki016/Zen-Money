@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useAppStore } from "@/lib/store";
-import { CURRENCIES } from "@/lib/types";
+import { CURRENCIES, UserSettings } from "@/lib/types";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -134,7 +134,7 @@ export default function SettingsPage() {
   const [editCatName, setEditCatName] = useState("");
   const [editCatColor, setEditCatColor] = useState("");
 
-  const [localSettings, setLocalSettings] = useState<any>(null);
+  const [localSettings, setLocalSettings] = useState<Partial<UserSettings> | null>(null);
   const [isSaving, setIsSaving] = useState(false);
 
   useEffect(() => {

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import { Virtuoso, VirtuosoHandle } from "react-virtuoso";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -14,13 +14,12 @@ import {
   isSameMonth,
   isSameDay,
   isToday,
-  startOfDay,
   parseISO,
 } from "date-fns";
 import { useRouter } from "next/navigation";
 import { useAppStore } from "@/lib/store";
 import { Expense, Income } from "@/lib/types";
-import { ArrowLeft, ChevronDown, Plus, Receipt, Wallet, X } from "lucide-react";
+import { Plus, Receipt, Wallet, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const START_INDEX = 1200; // Index 1200 is the current month. Gives 100 years past and future.
@@ -144,7 +143,7 @@ function MonthView({
 
         {/* Days grid */}
         <div className="grid grid-cols-7 gap-2 md:gap-4">
-          {days.map((day, i) => {
+          {days.map((day) => {
             const isCurrentMonth = isSameMonth(day, monthDate);
             const isTodayDate = isToday(day);
             const dayKey = format(day, "yyyy-MM-dd");

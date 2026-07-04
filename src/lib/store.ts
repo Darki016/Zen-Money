@@ -13,7 +13,7 @@ interface AppState {
   // Auth
   userId: string | null;
   userEmail: string | null;
-  userMetadata: Record<string, any> | null;
+  userMetadata: Record<string, unknown> | null;
 
   // Settings
   settings: UserSettings | null;
@@ -34,7 +34,7 @@ interface AppState {
   isLoadingIncomes: boolean;
 
   // Actions
-  setUser: (userId: string, email: string, metadata?: Record<string, any>) => void;
+  setUser: (userId: string, email: string, metadata?: Record<string, unknown>) => void;
   clearUser: () => void;
   
   fetchSettings: () => Promise<void>;
@@ -123,7 +123,8 @@ export const useAppStore = create<AppState>((set, get) => ({
     const { userId, settings } = get();
     if (!userId || !settings) return;
 
-    const { id, user_id, created_at, ...allowedUpdates } = updates as any;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { id, user_id, created_at, ...allowedUpdates } = updates as Record<string, unknown>;
 
     const newSettings = { ...settings, ...updates };
     const { error } = await supabase
