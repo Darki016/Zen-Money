@@ -1,0 +1,185 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  .theme {
+    --font-heading: var(--font-heading);
+    --font-sans: var(--font-sans);
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading), sans-serif;
+    letter-spacing: -0.02em;
+  }
+  :root {
+    color-scheme: dark;
+    --background: #0A0A0B;
+    --foreground: #F5F5F4;
+    --card: #121214;
+    --card-foreground: #F5F5F4;
+    --popover: #121214;
+    --popover-foreground: #F5F5F4;
+    --primary: #7C5CFF;
+    --primary-foreground: #FFFFFF;
+    --secondary: #1A1A1D;
+    --secondary-foreground: #F5F5F4;
+    --muted: #1A1A1D;
+    --muted-foreground: #A1A1AA;
+    --accent: #1A1A1D;
+    --accent-foreground: #F5F5F4;
+    --destructive: #F87171;
+    --destructive-foreground: #000000;
+    --border: rgba(255, 255, 255, 0.08);
+    --input: rgba(255, 255, 255, 0.08);
+    --ring: rgba(124, 92, 255, 0.5);
+
+    /* Runway specific variables */
+    --bg-base: #0A0A0B;
+    --bg-surface: #121214;
+    --bg-surface-2: #1A1A1D;
+    --border-subtle: rgba(255, 255, 255, 0.08);
+    --text-primary: #F5F5F4;
+    --text-muted: #A1A1AA;
+    --accent-runway: #7C5CFF;
+    --accent-soft: rgba(124, 92, 255, 0.15);
+    --money-positive: #34D399;
+    --money-negative: #F87171;
+    --money-warning: #FBBF24;
+
+    --radius: 0.75rem; /* rounded-xl roughly */
+  }
+
+  .dark {
+    --background: #0A0A0B;
+    --foreground: #F5F5F4;
+    --card: #121214;
+    --card-foreground: #F5F5F4;
+    --popover: #121214;
+    --popover-foreground: #F5F5F4;
+    --primary: #7C5CFF;
+    --primary-foreground: #FFFFFF;
+    --secondary: #1A1A1D;
+    --secondary-foreground: #F5F5F4;
+    --muted: #1A1A1D;
+    --muted-foreground: #A1A1AA;
+    --accent: #1A1A1D;
+    --accent-foreground: #F5F5F4;
+    --destructive: #F87171;
+    --destructive-foreground: #000000;
+    --border: rgba(255, 255, 255, 0.08);
+    --input: rgba(255, 255, 255, 0.08);
+    --ring: rgba(124, 92, 255, 0.5);
+  }
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+
+  /* Custom Inputs */
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+
+  /* Custom sleek scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.25);
+  }
+
+  /* Firefox scrollbar */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.10) 0%,
+      rgba(255, 255, 255, 0.03) 100%
+    );
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-top-color: rgba(255, 255, 255, 0.25);
+    border-left-color: rgba(255, 255, 255, 0.18);
+
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.15),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.2),
+      0 8px 32px rgba(0, 0, 0, 0.4);
+
+    border-radius: 24px;
+    position: relative;
+    overflow: hidden;
+    transform: translateZ(0);
+  }
+
+  .glass-panel-highlight::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -20%;
+    width: 140%;
+    height: 200%;
+    background: radial-gradient(
+      circle at var(--highlight-x, 50%) var(--highlight-y, 50%),
+      rgba(255, 255, 255, 0.15),
+      transparent 40%
+    );
+    opacity: var(--highlight-opacity, 0);
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .glass-panel--accent-violet {
+    background: linear-gradient(
+      135deg,
+      rgba(124, 92, 255, 0.16) 0%,
+      rgba(124, 92, 255, 0.04) 100%
+    );
+  }
+  
+  .glass-panel--accent-emerald {
+    background: linear-gradient(
+      135deg,
+      rgba(52, 211, 153, 0.16) 0%,
+      rgba(52, 211, 153, 0.04) 100%
+    );
+  }
+
+  .glass-panel--accent-amber {
+    background: linear-gradient(
+      135deg,
+      rgba(251, 191, 36, 0.16) 0%,
+      rgba(251, 191, 36, 0.04) 100%
+    );
+  }
+}
