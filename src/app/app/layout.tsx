@@ -165,7 +165,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
     .toUpperCase();
 
   return (
-    <div className="min-h-screen flex bg-[var(--bg-base)] relative overflow-hidden">
+    <div className="h-[100dvh] flex bg-[var(--bg-base)] relative overflow-hidden">
       <KeyboardShortcuts />
 
       {/* Ambient Animated Background Orbs */}
@@ -241,7 +241,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
       </div>
 
       {/* Main Content */}
-      <main className="flex-1 flex flex-col min-h-screen z-10">
+      <main className="flex-1 flex flex-col h-[100dvh] z-10 overflow-hidden">
         {/* Mobile Top Bar */}
         <div className="md:hidden flex items-center justify-between border-b border-white/10 bg-white/5 backdrop-blur-3xl px-4 py-3 sticky top-0 z-50 shadow-sm">
           <h1 className="text-lg font-semibold text-[var(--text-primary)]">

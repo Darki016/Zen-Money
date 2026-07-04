@@ -156,12 +156,10 @@ function MonthView({
             const totalIncome = dayIncomes.reduce((sum, inc) => sum + Number(inc.amount), 0);
 
             return (
-              <motion.div
+              <div
                 key={day.toISOString()}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.95 }}
                 onClick={() => onSelectDate(day)}
-                className={`relative aspect-square md:aspect-auto md:h-28 rounded-2xl md:rounded-[24px] p-2 md:p-3 cursor-pointer transition-colors flex flex-col items-center md:items-start justify-center md:justify-start ${
+                className={`relative aspect-square md:aspect-auto md:h-28 rounded-2xl md:rounded-[24px] p-2 md:p-3 cursor-pointer transition-all hover:scale-[1.02] active:scale-95 flex flex-col items-center md:items-start justify-center md:justify-start ${
                   isCurrentMonth
                     ? isTodayDate
                       ? "bg-violet-500/20 backdrop-blur-3xl border border-violet-500/30 ring-2 ring-violet-500 ring-offset-2 ring-offset-[var(--bg-base)]"
@@ -200,7 +198,7 @@ function MonthView({
                     <div className="w-1.5 h-1.5 rounded-full bg-[var(--money-negative)] shadow-[0_0_8px_var(--money-negative)]" />
                   )}
                 </div>
-              </motion.div>
+              </div>
             );
           })}
         </div>
