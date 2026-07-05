@@ -137,6 +137,7 @@ export const useAppStore = create<AppState>((set, get) => ({
       return;
     }
     set({ settings: newSettings });
+    get().computeBalance();
   },
 
   // ── Categories ────────────────────────────────────────────
@@ -330,9 +331,17 @@ export const useAppStore = create<AppState>((set, get) => ({
     let endDate: Date;
     if (settings?.budget_period_end) {
       endDate = new Date(settings.budget_period_end);
+      // If the set budget period has already passed, roll it forward by months until it's in the future
+      while (endDate.getTime() < today.getTime()) {
+        endDate.setMonth(endDate.getMonth() + 1);
+      }
     } else {
       // Default to end of current month
       endDate = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+      // If today is the last day of the month (or somehow past), roll to next month's end to avoid remainingDays=1
+      if (endDate.getTime() <= today.getTime()) {
+        endDate = new Date(today.getFullYear(), today.getMonth() + 2, 0);
+      }
     }
     endDate.setHours(0, 0, 0, 0);
 
